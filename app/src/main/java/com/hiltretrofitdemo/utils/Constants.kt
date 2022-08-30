@@ -3,7 +3,7 @@ package com.hiltretrofitdemo.utils
 class Constants {
 
     companion object {
-        const val BASE_URL = "https://jsonplaceholder.typicode.com/"
-        const val RANDOM_URL = "todos/1"
+        const val BASE_URL = "https://dummy.restapiexample.com"
+        const val RANDOM_URL = "/api/v1/employees"
     }
 }

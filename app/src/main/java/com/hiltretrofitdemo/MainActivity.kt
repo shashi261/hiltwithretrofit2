@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hiltretrofitdemo.databinding.ActivityMainBinding
 import com.hiltretrofitdemo.db.Channel
 import com.hiltretrofitdemo.utils.NetworkResult
@@ -25,14 +27,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(_binding.root)
 
         fetchData()
-        _binding.imgRefresh.setOnClickListener {
+        /*_binding.imgRefresh.setOnClickListener {
             fetchResponse()
         }
 
         _binding.add.setOnClickListener {
             val channel = Channel(1,"test")
             viewModel.addChannelData(channel)
-        }
+        }*/
+
+        _binding.employeesList.layoutManager = LinearLayoutManager(this)
     }
 
     private fun fetchData() {
@@ -42,6 +46,10 @@ class MainActivity : AppCompatActivity() {
                 is NetworkResult.Success -> {
                     response.data?.let {
                         Log.e("Mango",it.toString())
+                        it.data?.let {
+                            _binding.employeesList.adapter = EmployeeAdapter(it)
+                        }
+
                     }
                     _binding.pbDog.visibility = View.GONE
                 }

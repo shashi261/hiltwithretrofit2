@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.hiltretrofitdemo.data.Repository
 import com.hiltretrofitdemo.db.Channel
 import com.hiltretrofitdemo.db.ChannelDao
-import com.hiltretrofitdemo.model.DataResponse
+import com.hiltretrofitdemo.model.EmployeeResponse
 import com.hiltretrofitdemo.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -20,8 +20,8 @@ class MainViewModel @Inject constructor(
     private val channelDao: ChannelDao
 ) : ViewModel() {
 
-    private val _response: MutableLiveData<NetworkResult<DataResponse>> = MutableLiveData()
-    val response: LiveData<NetworkResult<DataResponse>> = _response
+    private val _response: MutableLiveData<NetworkResult<EmployeeResponse>> = MutableLiveData()
+    val response: LiveData<NetworkResult<EmployeeResponse>> = _response
 
     fun fetchData() = viewModelScope.launch {
         repository.getDog().collect(){
