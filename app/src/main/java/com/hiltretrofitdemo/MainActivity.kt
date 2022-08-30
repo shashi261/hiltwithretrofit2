@@ -73,6 +73,5 @@ class MainActivity : AppCompatActivity() {
     private fun fetchResponse() {
         viewModel.fetchData()
         _binding.pbDog.visibility = View.VISIBLE
-
     }
 }
